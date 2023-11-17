@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy # ライブラリ
+from flask_login import UserMixin
+from flask_sqlalchemy import SQLAlchemy 
 from datetime import datetime, date
 
 
@@ -47,6 +48,8 @@ def read(id):
 @app.route('/delete/<int:id>')
 def delete(id):
     post = Post.query.get(id)
+
+
 
     db.session.delete(post)
     db.session.commit()
